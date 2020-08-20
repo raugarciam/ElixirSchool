@@ -119,4 +119,138 @@ defmodule Enumeraciones do
   def each() do
     Enum.each(["one", "two", "three"], fn s -> IO.puts(s)  end)
   end
+
+  @doc """
+  map
+
+  Para aplicar una función a cada elemento y producir una nueva colección revisa la función map/2.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.map([0, 1, 2, 3], fn(x) -> x - 1 end)
+      [-1, 0, 1, 2]
+  """
+  def mapa() do
+    Enum.map([0, 1, 2, 3], fn(x) -> x - 1 end)
+  end
+
+  @doc """
+  min
+
+  min/1 encuentra el mínimo valor de la colección.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.min([5, 3, 0, -1])
+      -1
+  """
+  def minimo() do
+    Enum.min([5, 3, 0, -1])
+  end
+
+  @doc """
+  max
+
+  max/1 retorna el máximo valor de la colección.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.max([5, 3, 0, -1])
+      5
+  """
+  def maximo() do
+    Enum.max([5, 3, 0, -1])
+  end
+
+  @doc """
+  filter
+
+  La función filter/2 nos permite filtrar una colección que incluya solamente aquellos elementos que evaluan a true utilizando la función provista.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.filter([1, 2, 3, 4], fn(x) -> rem(x, 2) == 0 end)
+      [2, 4]
+  """
+  def filtro() do
+    Enum.filter([1, 2, 3, 4], fn (x) -> rem(x, 2) == 0 end)
+  end
+
+  @doc """
+  reduce
+
+  Con reduce/3 podemos transformar nuestra colección a un único valor. Para hacer esto aplicamos un acumulador opcional (10 en este ejemplo) que será pasado a nuestra función; si no se provee un acumulador, el primer valor en el enumerable es usado.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.reduce([1, 2, 3], 10, fn(x, acc) -> x + acc end)
+      16
+
+      iex> Enum.reduce([1, 2, 3], fn(x, acc) -> x + acc end)
+      6
+
+      iex> Enum.reduce(["a","b","c"], "1", fn(x,acc) -> x <> acc end)
+      "cba1"
+  """
+  def reducir() do
+    IO.puts("#{Enum.reduce([1, 2, 3], 10, fn(x, acc)-> x + acc end)}")
+    IO.puts("#{Enum.reduce([1, 2, 3], fn(x, acc)-> x + acc end)}")
+    IO.puts("#{Enum.reduce(["a", "b", "c"], "1", fn(x, acc)-> x <> acc end)}")
+  end
+
+  @doc """
+  sort
+
+  Ordenar nuestras colecciones se hace fácil no con una, sino dos funciones de ordenación. sort/1 utiliza el ordenamiento de términos de Erlang para determinar el orden de ordenación.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.sort([5, 6, 1, 3, -1, 4])
+      [-1, 1, 3, 4, 5, 6]
+  """
+  def ordenar() do
+    Enum.sort([5, 6, 1, 3, -1, 4])
+  end
+
+  @doc """
+  uniq_by
+
+  Podemos usar uniq_by/2 para eliminar duplicados de nuestras colecciones.
+
+  ## Parametros
+
+  N/A
+
+  ## Ejemplos
+
+      iex> Enum.uniq_by([1, 2, 3, 2, 1, 1, 1, 1, 1], fn x -> x end)
+      [1, 2, 3]
+  """
+  def uniq() do
+    Enum.uniq_by([1, 2, 3, 2, 1, 1, 1, 1, 1], fn x -> x  end)
+  end
 end
